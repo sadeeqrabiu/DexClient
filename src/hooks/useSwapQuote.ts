@@ -2,7 +2,7 @@
 import { useRfq } from "@ston-fi/omniston-sdk-react";
 import { Blockchain, SettlementMethod, Quote } from '@ston-fi/omniston-sdk-react';
 import { SwapFormData } from '../types/swap';
-import { formatUnits, parseUnits } from '../utils/numbers';
+import { formatUnits, parseUnits } from '../lib/numbers';
 
 export const useSwapQuote = (formData: SwapFormData) => {
   const { offerAsset, askAsset, amount } = formData;
