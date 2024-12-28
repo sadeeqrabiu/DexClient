@@ -6,8 +6,8 @@ import {
 } from "@tanstack/react-query";
 
 // import { useStonApi } from "../hooks/useStonApi";
-import { useStonApi } from "../hooks/useStoneApi";
-import { AbortedPromiseError, promiseWithSignal, sleep } from "@/lib/promise";
+import { useStonApi } from "../hooks/useStonApi";
+import { AbortedPromiseError, promiseWithSignal, sleep } from "../lib/promes";
 
 import { useSwapTransactionDetails } from "../providers/swap-transaction";
 

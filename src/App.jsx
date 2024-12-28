@@ -6,6 +6,7 @@ import { TonConnectButton } from "@tonconnect/ui-react";
 import Wallet from "./components/Wallet";
 import Header from "./components/Header";
 import WalletInfo from "./components/WalletInfo";
+import { SwapFormHeader } from "./components/swap-form-header";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
        
         {/* <WalletInfo/> */}
         <Header />
+        <SwapFormHeader />
         <SwapContainer />
       </div>
     </div>

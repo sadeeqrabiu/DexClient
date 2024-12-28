@@ -1,35 +1,28 @@
+export class AbortedPromiseError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "AbortedPromiseError";
+  }
+}
 
-// interface ErrorOptions {
-//     cause?: unknown;
-//   }
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
-  // Extend Error class with AbortedPromiseError
-// export class AbortedPromiseError extends Error {
-//     constructor(message?: string, options?: ErrorOptions) {
-//       super(message, options);
-//       this.name = "AbortedPromiseError";
-//     }
-//   }
-  
-  export const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-  
-  export const promiseWithSignal = async <T = unknown>(
-    promise: Promise<T>,
-    signal: AbortSignal,
-    reason = new AbortedPromiseError("Aborted"),
-  ) => {
-    if (signal.aborted) {
-      throw reason;
-    }
-  
-    const result = await Promise.race([
-      promise,
-      new Promise<never>((_, reject) => {
-        signal.addEventListener("abort", () => reject(reason));
-      }),
-    ]);
-  
-    return result;
-  };
-  
+export const promiseWithSignal = async <T = unknown>(
+  promise: Promise<T>,
+  signal: AbortSignal,
+  reason = new AbortedPromiseError("Aborted"),
+) => {
+  if (signal.aborted) {
+    throw reason;
+  }
+
+  const result = await Promise.race([
+    promise,
+    new Promise<never>((_, reject) => {
+      signal.addEventListener("abort", () => reject(reason));
+    }),
+  ]);
+
+  return result;
+};
